@@ -12,6 +12,7 @@ module.exports = function (api) {
             screens: "./src/screens",
             types: "./src/types",
             constants: "./src/constants",
+            utils: "./src/utils",
           },
         },
       ],

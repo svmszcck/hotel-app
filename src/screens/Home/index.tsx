@@ -1,8 +1,15 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+
+import { Map } from "components";
 
 const Home = () => {
-  return <View></View>;
+  return (
+    <View>
+      <Map />
+      <View></View>
+    </View>
+  );
 };
 
 export default Home;
