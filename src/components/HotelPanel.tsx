@@ -21,15 +21,14 @@ const HotelPanel: FC<HotelPanelProps> = ({ image }) => {
       style={styles.container}
       onPress={() => navigation.navigate("Details" as never)}
     >
-      <SharedElement id="hotel-photo">
+      <SharedElement id="hotel-photo-tomato">
         <Image
           source={image ? { uri: image } : placeholder}
           style={styles.image}
           resizeMode="cover"
         />
-        <Score />
       </SharedElement>
-
+      <Score style={{ left: 30, right: undefined }} />
       <View style={styles.info}>
         <Text style={styles.title}>flower's berlin</Text>
         <View style={styles.location}>

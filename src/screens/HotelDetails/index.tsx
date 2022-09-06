@@ -4,8 +4,15 @@ import { useNavigation } from "@react-navigation/native";
 import { SharedElement } from "react-navigation-shared-element";
 import Icon from "@expo/vector-icons/Ionicons";
 
-import placeholder from "assets/images/placeholder.png";
-import { Card, Close, ScreenContainer, Separator, Score } from "components";
+import {
+  Button,
+  Card,
+  Carousel,
+  Close,
+  ScreenContainer,
+  Separator,
+  Score,
+} from "components";
 import Colors from "constants/colors";
 
 import styles from "./styles";
@@ -16,9 +23,8 @@ const HotelDetails = () => {
   return (
     <ScreenContainer>
       <View style={styles.container}>
-        <SharedElement id="hotel-photo">
-          <Image source={placeholder} style={styles.cover} />
-        </SharedElement>
+        <Carousel />
+
         <ScrollView contentContainerStyle={styles.info}>
           <View style={styles.topSection}>
             <Text style={styles.title}>flower's berlin</Text>
@@ -45,11 +51,17 @@ const HotelDetails = () => {
             Room types available in this location
           </Text>
           <View style={styles.rooms}>
-            <Card text="3x1 Bedroom suites" style={styles.card} />
-            <Card text="4x2 Bedroom suites" style={styles.card} />
-            <Card text="2x3 Bedroom suites" style={styles.card} />
+            <Card text="3x1 Bedroom suites" style={styles.room} />
+            <Card text="4x2 Bedroom suites" style={styles.room} />
+            <Card text="2x3 Bedroom suites" style={styles.room} />
           </View>
         </ScrollView>
+        <View style={styles.bottomSection}>
+          <Text>
+            From <Text style={styles.price}>55.00€/Night</Text>
+          </Text>
+          <Button title="EXPLORE" onPress={() => {}} />
+        </View>
         <Close onPress={() => navigation.goBack()} />
       </View>
     </ScreenContainer>

@@ -6,10 +6,7 @@ import Colors from "constants/colors";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.YELLOW_LIGHT,
-  },
-  cover: {
-    width: "100%",
-    height: 300,
+    flex: 1,
   },
   info: {
     padding: Spacing.LARGE,
@@ -50,9 +47,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
   },
-  card: {
+  room: {
     marginRight: Spacing.MEDIUM,
     marginBottom: Spacing.MEDIUM,
+  },
+  bottomSection: {
+    flexDirection: "row",
+    position: "absolute",
+    alignItems: "center",
+    bottom: 0,
+    width: "100%",
+    height: Spacing.LARGE_XXX,
+    backgroundColor: Colors.GREEN,
+    padding: Spacing.LARGE,
   },
 });
 

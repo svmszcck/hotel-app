@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from "react";
 
 import { SafeAreaView } from "components";
-import globalStyles from "global-styles";
 
 type ScreenContainerProps = {
   children: ReactNode;

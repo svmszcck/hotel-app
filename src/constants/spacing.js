@@ -4,5 +4,5 @@ export default {
   LARGE: 20,
   LARGE_X: 30,
   LARGE_XX: 40,
-  LARGE_XXX: 50,
+  LARGE_XXX: 60,
 };

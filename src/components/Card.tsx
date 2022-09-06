@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   container: {
     alignSelf: "flex-start",
     padding: Spacing.MEDIUM,
-    backgroundColor: Colors.YELLOW,
+    backgroundColor: Colors.GREEN,
   },
 });
 

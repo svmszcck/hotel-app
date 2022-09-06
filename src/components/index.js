@@ -9,3 +9,4 @@ export { default as Close } from "./Close";
 export { default as SafeAreaView } from "./SafeAreaView";
 export { default as Score } from "./Score";
 export { default as Maintenance } from "./Maintenance";
+export { default as Carousel } from "./Carousel";
