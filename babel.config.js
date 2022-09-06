@@ -13,6 +13,8 @@ module.exports = function (api) {
             types: "./src/types",
             constants: "./src/constants",
             utils: "./src/utils",
+            "global-styles": "./src/global-styles.ts",
+            "global-types": "./src/global-types.ts",
           },
         },
       ],

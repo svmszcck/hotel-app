@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: Colors.YELLOW_LIGHT,
     flexDirection: "row",
-    height: 100,
+    height: 120,
     left: 20,
     right: 20,
     borderWidth: 1,

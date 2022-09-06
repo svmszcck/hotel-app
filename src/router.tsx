@@ -1,15 +1,15 @@
 import React from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "@expo/vector-icons/FontAwesome5";
 
-import { Home, Search, Saved, Profile } from "screens";
+import { Home, Search, Saved, Profile, HotelDetails } from "screens";
 import Routes from "constants/routes";
 import Colors from "constants/colors";
 
-const Stack = createNativeStackNavigator();
+const Stack = createSharedElementStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const handleIcon = (screen: string, color: string) => {
@@ -23,6 +23,27 @@ const handleIcon = (screen: string, color: string) => {
     case Routes.PROFILE:
       return <Icon name="user-circle" size={20} solid color={color} />;
   }
+};
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        animationEnabled: true,
+      }}
+    >
+      <Stack.Screen name={Routes.HOME} component={Home} />
+      <Stack.Screen
+        name={Routes.DETAILS}
+        component={HotelDetails}
+        sharedElements={(route, otherRoute, showing) => {
+          const { item } = route.params;
+          return [`hotel-photo`];
+        }}
+      />
+    </Stack.Navigator>
+  );
 };
 
 const routes = () => {
@@ -52,8 +73,8 @@ const routes = () => {
           }}
         />
         <Tab.Screen
-          name={Routes.HOME}
-          component={Home}
+          name={Routes.HOME_STACK}
+          component={HomeStack}
           options={{
             tabBarIcon: ({ color }) => handleIcon(Routes.HOME, color),
           }}

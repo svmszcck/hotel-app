@@ -1,23 +1,33 @@
 import React, { FC } from "react";
-import { Image, View, Text, StyleSheet } from "react-native";
+import { Image, View, Text, StyleSheet, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/Ionicons";
+import { SharedElement } from "react-navigation-shared-element";
 
-import placeholder from "assets/images/placeholder.png";
 import Colors from "constants/colors";
 import Spacing from "constants/spacing";
+import { Separator } from "components";
+import placeholder from "assets/images/placeholder.png";
 
 type HotelPanelProps = {
   image?: string;
 };
 
 const HotelPanel: FC<HotelPanelProps> = ({ image }) => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
-      <Image
-        source={image ? { uri: image } : placeholder}
-        style={styles.image}
-        resizeMode="cover"
-      />
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate("Details" as never)}
+    >
+      <SharedElement id={"hotel-photo"}>
+        <Image
+          source={image ? { uri: image } : placeholder}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </SharedElement>
       <View style={styles.info}>
         <Text style={styles.title}>flower's berlin</Text>
         <View style={styles.location}>
@@ -27,34 +37,49 @@ const HotelPanel: FC<HotelPanelProps> = ({ image }) => {
             color={Colors.ORANGE}
             style={styles.locationIcon}
           />
-          <Text>6.3 km from city center</Text>
+          <Text numberOfLines={2}>6.3 km from city cendsfgdfgdfg</Text>
         </View>
+        <Separator style={styles.separator} />
+        <Text>
+          From <Text style={styles.price}>55.00€/Night</Text>
+        </Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    flex: 1,
   },
   image: {
     width: 100,
     height: "100%",
   },
   info: {
+    flex: 1,
+    flexWrap: "wrap",
     padding: Spacing.MEDIUM,
   },
   location: {
     flexDirection: "row",
     alignItems: "center",
+    marginTop: Spacing.MEDIUM,
   },
   locationIcon: {
     marginRight: Spacing.SMALL,
   },
   title: {
-    fontSize: Spacing.LARGE,
-    marginBottom: Spacing.SMALL,
+    fontSize: 20,
+    fontWeight: "500",
+  },
+  price: {
+    color: Colors.ORANGE,
+    fontWeight: "600",
+  },
+  separator: {
+    marginBottom: Spacing.MEDIUM,
   },
 });
 
