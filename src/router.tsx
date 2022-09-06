@@ -38,6 +38,7 @@ const routes = () => {
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
             position: "absolute",
+            // height: 50,
           },
           tabBarInactiveTintColor: Colors.GRAY,
           tabBarActiveTintColor: Colors.WHITE,
