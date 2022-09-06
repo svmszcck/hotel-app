@@ -1,6 +1,6 @@
 export default {
-  HOME_STACK: "HomeStack",
-  HOME: "Map",
+  HOME_STACK: "Map",
+  HOME: "Home",
   DETAILS: "Details",
   PROFILE: "Profile",
   SAVED: "Saved",

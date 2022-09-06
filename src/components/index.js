@@ -7,3 +7,5 @@ export { default as Separator } from "./Separator";
 export { default as ScreenContainer } from "./ScreenContainer";
 export { default as Close } from "./Close";
 export { default as SafeAreaView } from "./SafeAreaView";
+export { default as Score } from "./Score";
+export { default as Maintenance } from "./Maintenance";

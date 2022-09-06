@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import {
   Text,
   StyleSheet,
@@ -13,7 +13,13 @@ type CloseProps = {
 };
 
 const Close: FC<CloseProps> = ({ onPress }) => {
-  return (
+  const [close, showClose] = useState<boolean>(false);
+
+  useEffect(() => {
+    setTimeout(() => showClose(true), 500);
+  }, []);
+
+  return close ? (
     <TouchableOpacity
       style={StyleSheet.flatten([globalStyles.close, { top: 15, left: 15 }])}
       onPress={onPress}
@@ -21,7 +27,7 @@ const Close: FC<CloseProps> = ({ onPress }) => {
     >
       <Text>X</Text>
     </TouchableOpacity>
-  );
+  ) : null;
 };
 
 export default Close;

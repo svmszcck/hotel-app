@@ -1,8 +1,13 @@
 import React from "react";
-import { View } from "react-native";
+
+import { Maintenance, ScreenContainer } from "components";
 
 const Saved = () => {
-  return <View></View>;
+  return (
+    <ScreenContainer>
+      <Maintenance />
+    </ScreenContainer>
+  );
 };
 
 export default Saved;

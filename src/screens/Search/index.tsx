@@ -1,8 +1,13 @@
 import React from "react";
-import { View } from "react-native";
+
+import { Maintenance, ScreenContainer } from "components";
 
 const Search = () => {
-  return <View></View>;
+  return (
+    <ScreenContainer>
+      <Maintenance />
+    </ScreenContainer>
+  );
 };
 
 export default Search;

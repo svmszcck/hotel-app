@@ -5,6 +5,7 @@ export default {
   GRAY_LIGHT: "#E5E5E5",
   WHITE: "#ffffff",
   BLACK: "#000000",
+  YELLOW: "#C9CBAB",
   YELLOW_LIGHT: "#F7F1E9",
   ORANGE: "#B26422",
 };

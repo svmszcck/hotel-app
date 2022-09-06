@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { Image, View, Text, StyleSheet, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "@expo/vector-icons/Ionicons";
+import Ionicon from "@expo/vector-icons/Ionicons";
 import { SharedElement } from "react-navigation-shared-element";
 
 import Colors from "constants/colors";
 import Spacing from "constants/spacing";
-import { Separator } from "components";
+import { Separator, Score } from "components";
 import placeholder from "assets/images/placeholder.png";
 
 type HotelPanelProps = {
@@ -21,23 +21,25 @@ const HotelPanel: FC<HotelPanelProps> = ({ image }) => {
       style={styles.container}
       onPress={() => navigation.navigate("Details" as never)}
     >
-      <SharedElement id={"hotel-photo"}>
+      <SharedElement id="hotel-photo">
         <Image
           source={image ? { uri: image } : placeholder}
           style={styles.image}
           resizeMode="cover"
         />
+        <Score />
       </SharedElement>
+
       <View style={styles.info}>
         <Text style={styles.title}>flower's berlin</Text>
         <View style={styles.location}>
-          <Icon
+          <Ionicon
             name="location-outline"
             size={20}
             color={Colors.ORANGE}
             style={styles.locationIcon}
           />
-          <Text numberOfLines={2}>6.3 km from city cendsfgdfgdfg</Text>
+          <Text numberOfLines={2}>6.3 km from city center</Text>
         </View>
         <Separator style={styles.separator} />
         <Text>
@@ -59,7 +61,6 @@ const styles = StyleSheet.create({
   },
   info: {
     flex: 1,
-    flexWrap: "wrap",
     padding: Spacing.MEDIUM,
   },
   location: {

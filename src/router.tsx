@@ -1,6 +1,10 @@
 import React from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { NavigationContainer } from "@react-navigation/native";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "@expo/vector-icons/FontAwesome5";
@@ -30,7 +34,7 @@ const HomeStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        animationEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
       }}
     >
       <Stack.Screen name={Routes.HOME} component={Home} />
