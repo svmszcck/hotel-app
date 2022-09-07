@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type SafeAreaViewProps = {
@@ -34,7 +34,17 @@ const SafeAreaView: FC<SafeAreaViewProps> = (props: SafeAreaViewProps) => {
     style.marginLeft = insets.left;
   }
 
-  return <View style={[{ flex: 1 }, style]}>{children}</View>;
+  return (
+    <View style={StyleSheet.flatten([styles.container, style])}>
+      {children}
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default SafeAreaView;

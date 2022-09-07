@@ -6,6 +6,7 @@ import { useContext } from "use-context-selector";
 import { HotelPanel, Map } from "components";
 import { fetchProperties as fetchPropertiesService } from "services/property";
 import GlobalContext from "contexts/GlobalContext";
+import { DEFAULT_CITY } from "constants/config";
 
 import styles from "./styles";
 
@@ -14,12 +15,10 @@ const Home = () => {
   const state = useContext(GlobalContext);
   const { activeProperty, setProperties } = state;
 
-  const fetchProperties = async () => {
-    const result = await fetchPropertiesService(32);
+  const fetchProperties = async (): Promise<void> => {
+    const result = await fetchPropertiesService(DEFAULT_CITY);
 
-    if (result) {
-      setProperties(result);
-    }
+    if (result) setProperties(result);
   };
 
   useEffect(() => {

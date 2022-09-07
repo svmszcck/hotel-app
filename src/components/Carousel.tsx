@@ -25,13 +25,13 @@ const Carousel: FC<CarouselProps> = ({ images }) => {
         data={trimmedImages}
         keyExtractor={(item) => item.url}
         renderItem={({ item }) => {
-          // console.log(item.url);
           return (
-            <View style={styles.child}>
+            <View style={styles.child} testID="carousel-item">
               <SharedElement id={`hotel-photo-${item.position}`}>
                 <Image
                   source={item.url ? { uri: item.url } : placeholder}
                   style={styles.cover}
+                  testID="carousel-item-image"
                 />
               </SharedElement>
             </View>

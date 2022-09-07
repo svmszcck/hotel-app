@@ -17,11 +17,10 @@ const HotelPanel: FC = () => {
   const activeProperty = usePropertySelect();
   const coverImage = activeProperty?.images[0]?.url;
 
-  // console.log(activeProperty);
-
   return (
     <Pressable
       style={styles.container}
+      testID="hotel-panel-container"
       onPress={() => navigation.navigate(Routes.DETAILS as never)}
     >
       <SharedElement id="hotel-photo-0">
@@ -33,7 +32,7 @@ const HotelPanel: FC = () => {
           />
         </View>
       </SharedElement>
-      <Score style={{ left: 30, right: undefined }} />
+      <Score style={styles.score} />
       <View style={styles.info}>
         <Text style={styles.title} numberOfLines={1}>
           {activeProperty.name}
@@ -100,6 +99,10 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginBottom: Spacing.MEDIUM,
+  },
+  score: {
+    left: 30,
+    right: undefined,
   },
 });
 

@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Panel Component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "is_portrait": true,
+          "position": 0,
+          "tags": Array [],
+          "unit_group_ids": Array [],
+          "url": "https://i.picsum.photos/id/270/536/354.jpg?hmac=mnhmFHibNPisjwBAA_oFyczU3QOuP0Pd6-oeEm5IQaU",
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    initialNumToRender={1}
+    initialScrollIndex={0}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    onScrollToIndexFailed={[Function]}
+    onViewableItemsChanged={[Function]}
+    pagingEnabled={true}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEnabled={true}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    showsVerticalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    viewabilityConfig={
+      Object {
+        "itemVisiblePercentThreshold": 60,
+        "minimumViewTime": 200,
+      }
+    }
+    viewabilityConfigCallbackPairs={
+      Array [
+        Object {
+          "onViewableItemsChanged": [Function],
+          "viewabilityConfig": Object {
+            "itemVisiblePercentThreshold": 60,
+            "minimumViewTime": 200,
+          },
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "justifyContent": "center",
+              "width": 750,
+            }
+          }
+          testID="carousel-item"
+        >
+          <View
+            collapsable={false}
+          >
+            <Image
+              source={
+                Object {
+                  "uri": "https://i.picsum.photos/id/270/536/354.jpg?hmac=mnhmFHibNPisjwBAA_oFyczU3QOuP0Pd6-oeEm5IQaU",
+                }
+              }
+              style={
+                Object {
+                  "height": 250,
+                  "minHeight": 300,
+                  "width": "100%",
+                }
+              }
+              testID="carousel-item-image"
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "bottom": 0,
+          "flexDirection": "row",
+          "height": 28.125,
+          "justifyContent": "center",
+          "marginVertical": 16.675,
+          "position": "absolute",
+        },
+        Object {},
+      ]
+    }
+  >
+    <View
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "borderRadius": 25,
+          "height": 28.125,
+          "marginHorizontal": 18.75,
+          "opacity": 1,
+          "width": 28.125,
+        }
+      }
+      testID="_pagination_0"
+    />
+  </View>
+</View>
+`;

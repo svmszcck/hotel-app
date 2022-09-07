@@ -26,13 +26,13 @@ const renderMarker: FC<MarkerProps> = ({ marker }) => {
           name="caret-down"
           size={20}
           color={Colors.GRAY_DARK}
-          style={{
-            marginTop: -8,
-          }}
+          style={styles.arrowIcon}
         />
       </View>
 
-      <Callout tooltip />
+      <Callout tooltip>
+        <View></View>
+      </Callout>
     </>
   );
 };
@@ -42,6 +42,7 @@ const Map: FC<MapProps> = () => {
   const { properties, activeProperty, setActiveProperty } = state;
 
   const handleClick = (id: number) => {
+    console.log("xxx");
     if (activeProperty && id === activeProperty) setActiveProperty(null);
     else setActiveProperty(id);
   };
@@ -64,7 +65,6 @@ const Map: FC<MapProps> = () => {
               latitude: marker.location.lat,
               longitude: marker.location.lng,
             }}
-            title={marker.name}
             onPress={() => handleClick(marker.id)}
           >
             {renderMarker(marker)}
@@ -99,6 +99,9 @@ const styles = StyleSheet.create({
   },
   markerText: {
     color: "white",
+  },
+  arrowIcon: {
+    marginTop: -8,
   },
 });
 

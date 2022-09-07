@@ -25,14 +25,11 @@ const HotelDetails = () => {
   const [property, setProperty] = useState(null);
   const navigation = useNavigation();
   const activeProperty: Property = usePropertySelect();
-  const state = useContext(GlobalContext);
 
-  const fetchProperty = async () => {
+  const fetchProperty = async (): Promise<void> => {
     const result = await fetchPropertyService(activeProperty.id);
 
-    if (result) {
-      setProperty(result);
-    }
+    if (result) setProperty(result);
   };
 
   useEffect(() => {
