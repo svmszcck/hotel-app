@@ -24,7 +24,6 @@ const HotelDetails = () => {
     <ScreenContainer>
       <View style={styles.container}>
         <Carousel />
-
         <ScrollView contentContainerStyle={styles.info}>
           <View style={styles.topSection}>
             <Text style={styles.title}>flower's berlin</Text>

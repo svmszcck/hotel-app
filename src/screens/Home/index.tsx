@@ -1,15 +1,18 @@
-import React from "react";
-import { Image, View, StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { View, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { HotelPanel, Map } from "components";
+import { fetchProperties } from "services/property";
 
 import styles from "./styles";
 
 const Home = () => {
   const insets = useSafeAreaInsets();
 
-  console.log(insets);
+  useEffect(() => {
+    fetchProperties(32);
+  }, []);
 
   return (
     <View>

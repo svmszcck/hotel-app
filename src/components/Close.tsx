@@ -8,6 +8,8 @@ import {
 
 import globalStyles from "global-styles";
 
+const DELAY = 250;
+
 type CloseProps = {
   onPress: (event: GestureResponderEvent) => void;
 };
@@ -16,7 +18,7 @@ const Close: FC<CloseProps> = ({ onPress }) => {
   const [close, showClose] = useState<boolean>(false);
 
   useEffect(() => {
-    setTimeout(() => showClose(true), 500);
+    setTimeout(() => showClose(true), DELAY);
   }, []);
 
   return close ? (
