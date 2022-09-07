@@ -27,4 +27,6 @@ export type Property = {
   images: PropertyImg[];
   name: string;
   distance: number;
+  description: string;
+  unit_groups: { name: string }[];
 };

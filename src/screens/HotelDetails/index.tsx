@@ -22,7 +22,7 @@ import { Property } from "global-types";
 import styles from "./styles";
 
 const HotelDetails = () => {
-  const [property, setProperty] = useState(null);
+  const [property, setProperty] = useState<Property>(null);
   const navigation = useNavigation();
   const activeProperty: Property = usePropertySelect();
 
