@@ -5,6 +5,8 @@ export const DEFAULT_LOCATION = {
   longitudeDelta: 0.5,
 };
 
+export const MAX_IMG = 5;
+
 // Events
 
 export const MARKER_PRESS = "marker-press";

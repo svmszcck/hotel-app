@@ -17,15 +17,15 @@ import Colors from "constants/colors";
 import usePropertySelect from "hooks/usePropertySelect";
 import { fetchProperty as fetchPropertyService } from "services/property";
 import GlobalContext from "contexts/GlobalContext";
+import { Property } from "global-types";
 
 import styles from "./styles";
 
 const HotelDetails = () => {
   const [property, setProperty] = useState(null);
   const navigation = useNavigation();
-  const activeProperty = usePropertySelect();
+  const activeProperty: Property = usePropertySelect();
   const state = useContext(GlobalContext);
-  const { setActiveProperty } = state;
 
   const fetchProperty = async () => {
     const result = await fetchPropertyService(activeProperty.id);
@@ -42,7 +42,7 @@ const HotelDetails = () => {
   return (
     <ScreenContainer>
       <View style={styles.container}>
-        <Carousel />
+        <Carousel images={activeProperty.images} />
         <ScrollView contentContainerStyle={styles.info}>
           <View style={styles.topSection}>
             <Text style={styles.title}>{activeProperty.name}</Text>
@@ -67,7 +67,7 @@ const HotelDetails = () => {
           </Text>
           <View style={styles.rooms}>
             {property?.unit_groups.map((room) => (
-              <Card text={room.name} style={styles.room} />
+              <Card text={room.name} style={styles.room} key={property.id} />
             ))}
           </View>
         </ScrollView>

@@ -24,7 +24,7 @@ const HotelPanel: FC = () => {
       style={styles.container}
       onPress={() => navigation.navigate(Routes.DETAILS as never)}
     >
-      <SharedElement id="hotel-photo-tomato">
+      <SharedElement id="hotel-photo-0">
         <View style={styles.imageWrapper}>
           <Image
             source={coverImage ? { uri: coverImage } : placeholder}

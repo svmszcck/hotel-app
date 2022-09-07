@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useMemo, FC } from "react";
 import { Image, View, StyleSheet } from "react-native";
 import { SwiperFlatList } from "react-native-swiper-flatlist";
 import { SharedElement } from "react-navigation-shared-element";
 
 import { screenWidth } from "utils/ui";
-import placeholder from "assets/images/placeholder.png";
+import { trimImages } from "utils/general";
+import { PropertyImg } from "global-types";
 
-const colors = ["tomato", "thistle", "skyblue", "teal"];
+import placeholder from "assets/images/placeholder.png";
 
 const width = screenWidth();
 
-const Carousel = () => {
+type CarouselProps = {
+  images: PropertyImg[];
+};
+
+const Carousel: FC<CarouselProps> = ({ images }) => {
+  const trimmedImages = useMemo(() => trimImages(images), [images]);
+
   return (
     <View style={styles.container}>
       <SwiperFlatList
         showPagination
-        data={colors}
-        renderItem={({ item }) => (
-          <View style={[styles.child]}>
-            <SharedElement id={`hotel-photo-${item}`} style={styles.cover}>
-              <Image source={placeholder} style={styles.cover} />
-            </SharedElement>
-          </View>
-        )}
+        data={trimmedImages}
+        keyExtractor={(item) => item.url}
+        renderItem={({ item }) => {
+          // console.log(item.url);
+          return (
+            <View style={styles.child}>
+              <SharedElement id={`hotel-photo-${item.position}`}>
+                <Image
+                  source={item.url ? { uri: item.url } : placeholder}
+                  style={styles.cover}
+                />
+              </SharedElement>
+            </View>
+          );
+        }}
       />
     </View>
   );
@@ -32,11 +46,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
   },
-  child: { width, justifyContent: "center" },
-  text: { fontSize: width * 0.5, textAlign: "center" },
+  child: {
+    width,
+    justifyContent: "center",
+  },
   cover: {
     width: "100%",
-    height: 300,
+    height: 250,
     minHeight: 300,
   },
 });

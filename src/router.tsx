@@ -58,7 +58,7 @@ const MainStack = () => {
         component={HotelDetails}
         sharedElements={(route, otherRoute, showing) => {
           const { item } = route.params;
-          return [`hotel-photo-tomato`];
+          return ["hotel-photo-0"];
         }}
       />
     </Stack.Navigator>
