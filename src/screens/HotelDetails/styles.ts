@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
   info: {
     padding: Spacing.LARGE,
+    paddingBottom: Spacing.LARGE_XXX,
   },
   topSection: {
     flexDirection: "row",
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
   rooms: {
     flexDirection: "row",
     flexWrap: "wrap",
+    marginBottom: Spacing.LARGE,
   },
   room: {
     marginRight: Spacing.MEDIUM,

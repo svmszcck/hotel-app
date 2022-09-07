@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Image, View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { SharedElement } from "react-navigation-shared-element";
 import Icon from "@expo/vector-icons/Ionicons";
+import { useContext } from "use-context-selector";
 
 import {
   Button,
@@ -14,11 +14,30 @@ import {
   Score,
 } from "components";
 import Colors from "constants/colors";
+import usePropertySelect from "hooks/usePropertySelect";
+import { fetchProperty as fetchPropertyService } from "services/property";
+import GlobalContext from "contexts/GlobalContext";
 
 import styles from "./styles";
 
 const HotelDetails = () => {
+  const [property, setProperty] = useState(null);
   const navigation = useNavigation();
+  const activeProperty = usePropertySelect();
+  const state = useContext(GlobalContext);
+  const { setActiveProperty } = state;
+
+  const fetchProperty = async () => {
+    const result = await fetchPropertyService(activeProperty.id);
+
+    if (result) {
+      setProperty(result);
+    }
+  };
+
+  useEffect(() => {
+    fetchProperty();
+  }, []);
 
   return (
     <ScreenContainer>
@@ -26,7 +45,7 @@ const HotelDetails = () => {
         <Carousel />
         <ScrollView contentContainerStyle={styles.info}>
           <View style={styles.topSection}>
-            <Text style={styles.title}>flower's berlin</Text>
+            <Text style={styles.title}>{activeProperty.name}</Text>
             <Score outlined style={styles.score} />
           </View>
           <View style={styles.location}>
@@ -36,23 +55,20 @@ const HotelDetails = () => {
               color={Colors.ORANGE}
               style={styles.locationIcon}
             />
-            <Text numberOfLines={2}>6.3 km from city center</Text>
+            <Text numberOfLines={2}>
+              {activeProperty.distance.toFixed(1)} km from city center
+            </Text>
           </View>
-          <Text>
-            Nature lovers will get their money's worth in Baden-Baden! The spa
-            town in the Black Forest with the proximity to France invites you to
-            hike and discover its surroundings. Our limehome Baden-Baden
-            Bäderstr. is not only located in the heart of the city, from there
-            you can explore
-          </Text>
+          <Text>{property?.description}</Text>
+
           <Separator style={styles.separator} />
           <Text style={styles.roomTypes}>
             Room types available in this location
           </Text>
           <View style={styles.rooms}>
-            <Card text="3x1 Bedroom suites" style={styles.room} />
-            <Card text="4x2 Bedroom suites" style={styles.room} />
-            <Card text="2x3 Bedroom suites" style={styles.room} />
+            {property?.unit_groups.map((room) => (
+              <Card text={room.name} style={styles.room} />
+            ))}
           </View>
         </ScrollView>
         <View style={styles.bottomSection}>

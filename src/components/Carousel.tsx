@@ -29,12 +29,15 @@ const Carousel = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "white" },
+  container: {
+    backgroundColor: "white",
+  },
   child: { width, justifyContent: "center" },
   text: { fontSize: width * 0.5, textAlign: "center" },
   cover: {
     width: "100%",
     height: 300,
+    minHeight: 300,
   },
 });
 

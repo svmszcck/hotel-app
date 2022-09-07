@@ -6,31 +6,38 @@ import { SharedElement } from "react-navigation-shared-element";
 
 import Colors from "constants/colors";
 import Spacing from "constants/spacing";
+import Routes from "constants/routes";
 import { Separator, Score } from "components";
+import usePropertySelect from "hooks/usePropertySelect";
+
 import placeholder from "assets/images/placeholder.png";
 
-type HotelPanelProps = {
-  image?: string;
-};
-
-const HotelPanel: FC<HotelPanelProps> = ({ image }) => {
+const HotelPanel: FC = () => {
   const navigation = useNavigation();
+  const activeProperty = usePropertySelect();
+  const coverImage = activeProperty?.images[0]?.url;
+
+  // console.log(activeProperty);
 
   return (
     <Pressable
       style={styles.container}
-      onPress={() => navigation.navigate("Details" as never)}
+      onPress={() => navigation.navigate(Routes.DETAILS as never)}
     >
       <SharedElement id="hotel-photo-tomato">
-        <Image
-          source={image ? { uri: image } : placeholder}
-          style={styles.image}
-          resizeMode="cover"
-        />
+        <View style={styles.imageWrapper}>
+          <Image
+            source={coverImage ? { uri: coverImage } : placeholder}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </View>
       </SharedElement>
       <Score style={{ left: 30, right: undefined }} />
       <View style={styles.info}>
-        <Text style={styles.title}>flower's berlin</Text>
+        <Text style={styles.title} numberOfLines={1}>
+          {activeProperty.name}
+        </Text>
         <View style={styles.location}>
           <Ionicon
             name="location-outline"
@@ -38,12 +45,21 @@ const HotelPanel: FC<HotelPanelProps> = ({ image }) => {
             color={Colors.ORANGE}
             style={styles.locationIcon}
           />
-          <Text numberOfLines={2}>6.3 km from city center</Text>
+          <Text numberOfLines={2}>
+            {activeProperty.distance.toFixed(1)} km from city center
+          </Text>
         </View>
         <Separator style={styles.separator} />
-        <Text>
-          From <Text style={styles.price}>55.00€/Night</Text>
-        </Text>
+        {activeProperty.lowest_price_per_night ? (
+          <Text>
+            From{" "}
+            <Text style={styles.price}>
+              {activeProperty.lowest_price_per_night}€/Night
+            </Text>
+          </Text>
+        ) : (
+          <Text>No Price Info</Text>
+        )}
       </View>
     </Pressable>
   );
@@ -54,9 +70,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flex: 1,
   },
+  imageWrapper: {
+    backgroundColor: Colors.BLACK,
+  },
   image: {
     width: 100,
     height: "100%",
+    opacity: 0.6,
   },
   info: {
     flex: 1,
@@ -71,7 +91,7 @@ const styles = StyleSheet.create({
     marginRight: Spacing.SMALL,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "500",
   },
   price: {

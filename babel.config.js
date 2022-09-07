@@ -14,6 +14,8 @@ module.exports = function (api) {
             constants: "./src/constants",
             utils: "./src/utils",
             services: "./src/services",
+            contexts: "./src/contexts",
+            hooks: "./src/hooks",
             "global-styles": "./src/global-styles.ts",
             "global-types": "./src/global-types.ts",
           },

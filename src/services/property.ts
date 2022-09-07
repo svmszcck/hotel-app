@@ -15,9 +15,9 @@ export const fetchProperties = async (id: number): Promise<any | undefined> => {
 
     const data = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
-    return response.json();
+    return data?.payload;
   } catch (error) {
     console.log(error);
   }
@@ -35,9 +35,9 @@ export const fetchProperty = async (id: number): Promise<any | undefined> => {
 
     const data = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
-    return response.json();
+    return data?.payload;
   } catch (error) {
     console.log(error);
   }

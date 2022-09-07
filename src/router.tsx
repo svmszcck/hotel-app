@@ -9,12 +9,27 @@ import Icon from "@expo/vector-icons/FontAwesome5";
 import { Home, Search, Saved, Profile, HotelDetails } from "screens";
 import Routes from "constants/routes";
 import Colors from "constants/colors";
+import { isAndroid } from "utils/general";
 
 const Stack = createSharedElementStackNavigator();
 // A separate stack is required to prevent breaking the shared element transition
 // Please check the issue and solution from here: https://github.com/IjzerenHein/react-navigation-shared-element/issues/77#issuecomment-688496843
 const Stack2 = createSharedElementStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const tavNavigatorOptions: any = {
+  headerShown: false,
+  tabBarStyle: {
+    backgroundColor: Colors.GREEN_DARK,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    position: "absolute",
+  },
+  tabBarInactiveTintColor: Colors.GRAY,
+  tabBarActiveTintColor: Colors.WHITE,
+};
+
+if (isAndroid) tavNavigatorOptions.tabBarStyle.height = 50;
 
 const handleIcon = (screen: string, color: string) => {
   switch (screen) {
@@ -67,17 +82,7 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       initialRouteName={Routes.HOME_STACK}
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          backgroundColor: Colors.GREEN_DARK,
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          position: "absolute",
-        },
-        tabBarInactiveTintColor: Colors.GRAY,
-        tabBarActiveTintColor: Colors.WHITE,
-      }}
+      screenOptions={tavNavigatorOptions}
     >
       <Tab.Screen
         name={Routes.SEARCH}
