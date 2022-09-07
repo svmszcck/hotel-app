@@ -1,5 +1,12 @@
 # Hotel App
 
+**Installation & Running:**
+
+- yarn or npm i
+- yarn start or npm start
+
+<br />
+
 **Used Technologies:**
 
 - React & React Native & Expo
