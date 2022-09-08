@@ -79,7 +79,7 @@ const Map: FC<MapProps> = () => {
                 longitude: marker.location.lng,
               }}
               onPress={() => handleClick(marker.id)}
-              zIndex={index}
+              zIndex={marker.id === activeProperty ? 1000 : 0}
             >
               {renderMarker(marker, marker.id === activeProperty)}
             </Marker>
