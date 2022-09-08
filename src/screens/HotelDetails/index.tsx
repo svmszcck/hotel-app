@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/Ionicons";
-import { useContext } from "use-context-selector";
 
 import {
   Button,
@@ -14,9 +13,10 @@ import {
   Score,
 } from "components";
 import Colors from "constants/colors";
+import { MIN_PRICE, MAX_PRICE } from "constants/general";
 import usePropertySelect from "hooks/usePropertySelect";
 import { fetchProperty as fetchPropertyService } from "services/property";
-import GlobalContext from "contexts/GlobalContext";
+import { getRandomInt } from "utils/general";
 import { Property } from "global-types";
 
 import styles from "./styles";
@@ -70,7 +70,10 @@ const HotelDetails = () => {
         </ScrollView>
         <View style={styles.bottomSection}>
           <Text>
-            From <Text style={styles.price}>55.00€/Night</Text>
+            From{" "}
+            <Text style={styles.price}>
+              {getRandomInt(MIN_PRICE, MAX_PRICE)}€/Night
+            </Text>
           </Text>
           <Button title="EXPLORE" onPress={() => {}} />
         </View>
