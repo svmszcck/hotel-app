@@ -4,28 +4,33 @@ import MapView, { Callout, Marker, PROVIDER_DEFAULT } from "react-native-maps";
 import { useContext } from "use-context-selector";
 import Icon from "@expo/vector-icons/FontAwesome";
 
+import { getRandomInt } from "utils/general";
 import { screenWidth, screenHeight } from "utils/ui";
 import GlobalContext from "contexts/GlobalContext";
 import Colors from "constants/colors";
 import { DEFAULT_LOCATION, MARKER_PRESS } from "constants/general";
-
-type MarkerProps = {
-  marker: any;
-};
+import { Property } from "global-types";
 
 type MapProps = {};
 
-const renderMarker: FC<MarkerProps> = ({ marker }) => {
+const renderMarker: FC = (marker: Property, isActive: boolean) => {
   return (
     <>
       <View style={styles.markerWrapper}>
-        <View style={styles.marker}>
-          <Text style={styles.markerText}>49€</Text>
+        <View
+          style={StyleSheet.flatten([
+            styles.marker,
+            { backgroundColor: isActive ? Colors.ORANGE : Colors.GRAY_DARK },
+          ])}
+        >
+          <Text style={styles.markerText}>
+            {marker.lowest_price_per_night | getRandomInt(100)}€
+          </Text>
         </View>
         <Icon
           name="caret-down"
           size={20}
-          color={Colors.GRAY_DARK}
+          color={isActive ? Colors.ORANGE : Colors.GRAY_DARK}
           style={styles.arrowIcon}
         />
       </View>
@@ -42,7 +47,6 @@ const Map: FC<MapProps> = () => {
   const { properties, activeProperty, setActiveProperty } = state;
 
   const handleClick = (id: number) => {
-    console.log("xxx");
     if (activeProperty && id === activeProperty) setActiveProperty(null);
     else setActiveProperty(id);
   };
@@ -58,18 +62,20 @@ const Map: FC<MapProps> = () => {
           e.nativeEvent.action !== MARKER_PRESS ? setActiveProperty(null) : null
         }
       >
-        {properties.map((marker, index) => (
-          <Marker
-            key={index}
-            coordinate={{
-              latitude: marker.location.lat,
-              longitude: marker.location.lng,
-            }}
-            onPress={() => handleClick(marker.id)}
-          >
-            {renderMarker(marker)}
-          </Marker>
-        ))}
+        {properties.map((marker, index) => {
+          return (
+            <Marker
+              key={index}
+              coordinate={{
+                latitude: marker.location.lat,
+                longitude: marker.location.lng,
+              }}
+              onPress={() => handleClick(marker.id)}
+            >
+              {renderMarker(marker, marker.id === activeProperty)}
+            </Marker>
+          );
+        })}
       </MapView>
     </View>
   );
@@ -93,7 +99,6 @@ const styles = StyleSheet.create({
   marker: {
     width: 40,
     height: 40,
-    backgroundColor: Colors.GRAY_DARK,
     justifyContent: "center",
     alignItems: "center",
   },

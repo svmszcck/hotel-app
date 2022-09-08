@@ -6,6 +6,7 @@ export const DEFAULT_LOCATION = {
 };
 
 export const MAX_IMG = 5;
+export const DEFAULT_PRICE = 45;
 
 // Events
 

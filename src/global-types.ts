@@ -29,4 +29,5 @@ export type Property = {
   distance: number;
   description: string;
   unit_groups: { name: string }[];
+  lowest_price_per_night: number;
 };

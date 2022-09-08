@@ -9,3 +9,7 @@ export const trimImages = (images: PropertyImg[]) => {
   if (images.length > MAX_IMG) return images.slice(0, MAX_IMG);
   else return images;
 };
+
+export const getRandomInt = (max: number): number => {
+  return Math.floor(Math.random() * max);
+};
