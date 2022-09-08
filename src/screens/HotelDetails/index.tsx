@@ -45,18 +45,21 @@ const HotelDetails = () => {
             <Text style={styles.title}>{activeProperty.name}</Text>
             <Score outlined style={styles.score} />
           </View>
-          <View style={styles.location}>
-            <Icon
-              name="location-outline"
-              size={20}
-              color={Colors.ORANGE}
-              style={styles.locationIcon}
-            />
-            <Text numberOfLines={2}>
-              {activeProperty.distance.toFixed(1)} km from city center
-            </Text>
-          </View>
-          <Text>{property?.description}</Text>
+          {activeProperty.distance && (
+            <View style={styles.location}>
+              <Icon
+                name="location-outline"
+                size={20}
+                color={Colors.ORANGE}
+                style={styles.locationIcon}
+              />
+
+              <Text numberOfLines={2}>
+                {activeProperty.distance.toFixed(1)} km from city center
+              </Text>
+            </View>
+          )}
+          {property?.description && <Text>{property.description}</Text>}
 
           <Separator style={styles.separator} />
           <Text style={styles.roomTypes}>

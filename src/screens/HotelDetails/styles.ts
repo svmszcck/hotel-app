@@ -15,11 +15,12 @@ const styles = StyleSheet.create({
   topSection: {
     flexDirection: "row",
     alignItems: "center",
+    marginBottom: Spacing.LARGE,
   },
   location: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: Spacing.MEDIUM,
+    marginBottom: Spacing.MEDIUM,
   },
   locationIcon: {
     marginRight: Spacing.SMALL,

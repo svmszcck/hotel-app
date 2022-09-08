@@ -35,7 +35,7 @@ const HotelPanel: FC = () => {
       <Score style={styles.score} />
       <View style={styles.info}>
         <Text style={styles.title} numberOfLines={1}>
-          {activeProperty.name}
+          {activeProperty?.name}
         </Text>
         <View style={styles.location}>
           <Ionicon
@@ -45,15 +45,15 @@ const HotelPanel: FC = () => {
             style={styles.locationIcon}
           />
           <Text numberOfLines={2}>
-            {activeProperty.distance.toFixed(1)} km from city center
+            {activeProperty?.distance.toFixed(1)} km from city center
           </Text>
         </View>
         <Separator style={styles.separator} />
-        {activeProperty.lowest_price_per_night ? (
+        {activeProperty?.lowest_price_per_night ? (
           <Text>
             From{" "}
             <Text style={styles.price}>
-              {activeProperty.lowest_price_per_night}€/Night
+              {activeProperty?.lowest_price_per_night}€/Night
             </Text>
           </Text>
         ) : (
