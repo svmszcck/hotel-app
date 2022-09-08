@@ -65,11 +65,15 @@ const HotelDetails = () => {
           <Text style={styles.roomTypes}>
             Room types available in this location
           </Text>
-          <View style={styles.rooms}>
-            {property?.unit_groups.map((room) => (
-              <Card text={room.name} style={styles.room} key={property.id} />
-            ))}
-          </View>
+          {property?.unit_groups.length ? (
+            <View style={styles.rooms}>
+              {property?.unit_groups.map((room) => (
+                <Card text={room.name} style={styles.room} key={property.id} />
+              ))}
+            </View>
+          ) : (
+            <Text>No room available</Text>
+          )}
         </ScrollView>
         <View style={styles.bottomSection}>
           <Text>

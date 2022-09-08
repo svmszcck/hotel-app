@@ -8,6 +8,7 @@ import { getRandomInt } from "utils/general";
 import { screenWidth, screenHeight } from "utils/ui";
 import GlobalContext from "contexts/GlobalContext";
 import Colors from "constants/colors";
+import Spacing from "constants/spacing";
 import {
   DEFAULT_LOCATION,
   MARKER_PRESS,
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: Spacing.SMALL,
   },
   markerText: {
     color: "white",
