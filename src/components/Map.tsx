@@ -20,7 +20,9 @@ const renderMarker: FC = (marker: Property, isActive: boolean) => {
         <View
           style={StyleSheet.flatten([
             styles.marker,
-            { backgroundColor: isActive ? Colors.ORANGE : Colors.GRAY_DARK },
+            {
+              backgroundColor: isActive ? Colors.ORANGE : Colors.GRAY_DARK,
+            },
           ])}
         >
           <Text style={styles.markerText}>
@@ -71,6 +73,7 @@ const Map: FC<MapProps> = () => {
                 longitude: marker.location.lng,
               }}
               onPress={() => handleClick(marker.id)}
+              zIndex={index}
             >
               {renderMarker(marker, marker.id === activeProperty)}
             </Marker>
