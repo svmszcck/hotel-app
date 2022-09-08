@@ -8,7 +8,12 @@ import { getRandomInt } from "utils/general";
 import { screenWidth, screenHeight } from "utils/ui";
 import GlobalContext from "contexts/GlobalContext";
 import Colors from "constants/colors";
-import { DEFAULT_LOCATION, MARKER_PRESS } from "constants/general";
+import {
+  DEFAULT_LOCATION,
+  MARKER_PRESS,
+  MIN_PRICE,
+  MAX_PRICE,
+} from "constants/general";
 import { Property } from "global-types";
 
 type MapProps = {};
@@ -26,7 +31,8 @@ const renderMarker: FC = (marker: Property, isActive: boolean) => {
           ])}
         >
           <Text style={styles.markerText}>
-            {marker.lowest_price_per_night | getRandomInt(100)}€
+            {marker.lowest_price_per_night | getRandomInt(MIN_PRICE, MAX_PRICE)}
+            €
           </Text>
         </View>
         <Icon
