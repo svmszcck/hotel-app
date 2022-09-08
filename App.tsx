@@ -1,10 +1,12 @@
 import React from "react";
+import { LogBox } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
 
+import { SHOW_LOGS } from "./src/constants/config";
 import GlobalContextProvider from "./src/contexts/GlobalContext/provider";
-
 import Router from "./src/router";
+
+LogBox.ignoreAllLogs(!SHOW_LOGS);
 
 const App = () => {
   return (

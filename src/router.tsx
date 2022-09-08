@@ -117,7 +117,7 @@ const Tabs = () => {
 };
 
 const routes = () => {
-  NavigationBar.setBackgroundColorAsync(Colors.GREEN_DARK);
+  if (isAndroid) NavigationBar.setBackgroundColorAsync(Colors.GREEN_DARK);
 
   return (
     <NavigationContainer>

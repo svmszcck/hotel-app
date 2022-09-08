@@ -6,3 +6,5 @@ export const HEADERS = {
 };
 
 export const DEFAULT_CITY = 32;
+
+export const SHOW_LOGS = false;
