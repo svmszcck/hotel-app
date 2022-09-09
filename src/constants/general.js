@@ -9,6 +9,8 @@ export const MAX_IMG = 5;
 export const MIN_PRICE = 45;
 export const MAX_PRICE = 200;
 
+export const CAROUSEL_DELAY = 250;
+
 // Events
 
 export const MARKER_PRESS = "marker-press";

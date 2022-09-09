@@ -1,4 +1,4 @@
-import React, { useMemo, FC } from "react";
+import React, { useMemo, forwardRef, FC, Ref } from "react";
 import { Image, View, StyleSheet } from "react-native";
 import { SwiperFlatList } from "react-native-swiper-flatlist";
 import { SharedElement } from "react-navigation-shared-element";
@@ -13,9 +13,10 @@ const width = screenWidth();
 
 type CarouselProps = {
   images: PropertyImg[];
+  ref: Ref<any>;
 };
 
-const Carousel: FC<CarouselProps> = ({ images }) => {
+const Carousel: FC<CarouselProps> = forwardRef(({ images }, ref) => {
   const trimmedImages = useMemo(() => trimImages(images), [images]);
 
   return (
@@ -24,6 +25,7 @@ const Carousel: FC<CarouselProps> = ({ images }) => {
         showPagination
         data={trimmedImages}
         keyExtractor={(item) => item.url}
+        ref={ref}
         renderItem={({ item }) => {
           return (
             <View style={styles.child} testID="carousel-item">
@@ -40,7 +42,7 @@ const Carousel: FC<CarouselProps> = ({ images }) => {
       />
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/Ionicons";
@@ -13,7 +13,7 @@ import {
   Score,
 } from "components";
 import Colors from "constants/colors";
-import { MIN_PRICE, MAX_PRICE } from "constants/general";
+import { MIN_PRICE, MAX_PRICE, CAROUSEL_DELAY } from "constants/general";
 import usePropertySelect from "hooks/usePropertySelect";
 import { fetchProperty as fetchPropertyService } from "services/property";
 import { getRandomInt } from "utils/general";
@@ -23,8 +23,11 @@ import styles from "./styles";
 
 const HotelDetails = () => {
   const [property, setProperty] = useState<Property>(null);
+  const carouselRef = useRef(null);
   const navigation = useNavigation();
   const activeProperty: Property = usePropertySelect();
+
+  console.log(carouselRef);
 
   const fetchProperty = async (): Promise<void> => {
     const result = await fetchPropertyService(activeProperty.id);
@@ -39,7 +42,7 @@ const HotelDetails = () => {
   return (
     <ScreenContainer>
       <View style={styles.container}>
-        <Carousel images={activeProperty.images} />
+        <Carousel images={activeProperty.images} ref={carouselRef} />
         <ScrollView contentContainerStyle={styles.info}>
           <View style={styles.topSection}>
             <Text style={styles.title}>{activeProperty.name}</Text>
@@ -84,7 +87,12 @@ const HotelDetails = () => {
           </Text>
           <Button title="EXPLORE" onPress={() => {}} />
         </View>
-        <Close onPress={() => navigation.goBack()} />
+        <Close
+          onPress={() => {
+            carouselRef.current.goToFirstIndex();
+            setTimeout(() => navigation.goBack(), CAROUSEL_DELAY);
+          }}
+        />
       </View>
     </ScreenContainer>
   );
