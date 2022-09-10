@@ -27,8 +27,6 @@ const HotelDetails = () => {
   const navigation = useNavigation();
   const activeProperty: Property = usePropertySelect();
 
-  console.log(carouselRef);
-
   const fetchProperty = async (): Promise<void> => {
     const result = await fetchPropertyService(activeProperty.id);
 

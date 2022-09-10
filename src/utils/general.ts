@@ -5,7 +5,7 @@ import { MAX_IMG } from "constants/general";
 
 export const isAndroid = Platform.OS === "android";
 
-export const trimImages = (images: PropertyImg[]) => {
+export const trimImages = (images: PropertyImg[]): PropertyImg[] => {
   if (images.length > MAX_IMG) return images.slice(0, MAX_IMG);
   else return images;
 };

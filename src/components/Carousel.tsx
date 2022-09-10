@@ -13,7 +13,7 @@ const width = screenWidth();
 
 type CarouselProps = {
   images: PropertyImg[];
-  ref: Ref<any>;
+  ref?: Ref<any>;
 };
 
 const Carousel: FC<CarouselProps> = forwardRef(({ images }, ref) => {
