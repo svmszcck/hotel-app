@@ -15,8 +15,6 @@
 - React Navigation
 - Jest & React Testing Library
 
-<br />
-
 # Architecture
 
 I have separated services & constants & config variables as separate files.
@@ -30,8 +28,6 @@ Common(shared) types are in the "global-types.ts" file. Component specific types
 In order to run all of the tests please do "yarn test". You need to install jest on your local machine.
 
 If you want to run a single test, you can do this: "jest filename.test.js".
-
-<br>
 
 # Pros & Cons
 
